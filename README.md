@@ -25,11 +25,16 @@ Run the script to download a single file or a bunch of files:
 python picofile-dl.py [-u URL] [-f FILENAME] [-p PATH] [-h] [-v] [--verbose] 
 ```
 `-u` a url from picofile server to be dowloaded
+
 `-f` a file name including bunch of urls each in a line
+
 `-h` show help
+
 `-v` show the current of the script
+
 `--verbose` print extra information during the download progress
 
 # Todo
 [ ] Download files protected with password 
+
 [ ] An option do download the files with the browser (useful for windows user to get rid of installing `Axel4Windows`)
