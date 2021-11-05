@@ -1,0 +1,6 @@
+rich
+configargparse
+pathlib
+urllib
+selenium
+seedir
