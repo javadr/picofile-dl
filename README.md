@@ -14,7 +14,7 @@ To use this method, you would proceed as:o
 pip install -r requirements.txt
 ```
 
-To make Firefox work with Python selenium, you need to install the *geckodriver*. The geckodriver driver will start the real firefox browser and supports Javascript. The script uses `axel` to download the files. Windows users should download [Axel4Windows](https://sourceforge.net/projects/axel4windows/) and put it in the Windows Path. 
+To make Firefox work with Python selenium, you need to install the *geckodriver*. The geckodriver driver will start the real firefox browser and supports Javascript. The script relies on `axel` to download the files. Windows users should download [Axel4Windows](https://sourceforge.net/projects/axel4windows/) and put it in the Windows Path. 
 
 # Running the script
 Refer to `picofile-dl --help` for a complete, up-to-date reference on the runtime options supported by this utility.
@@ -30,7 +30,7 @@ python picofile-dl.py [-u URL] [-f FILENAME] [-p PATH] [-h] [-v] [--verbose]
 
 `-h` show help
 
-`-v` show the current of the script
+`-v` output version information and exit
 
 `--verbose` print extra information during the download progress
 
