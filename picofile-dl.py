@@ -49,7 +49,7 @@ def picofile_dl():
     # change directory to download path
     os.chdir(downloadPath)
     try:
-        for i, url in enumerate(track(urls, description="Downloading..."), 1):
+        for i, url in enumerate(track(urls, description="[green]Downloading..."), 1):
             showurl = f'{i}/{len(urls)}: {url}'
             try:
                 href = getDownloadLink(driver, url)
