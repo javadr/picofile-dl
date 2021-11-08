@@ -53,7 +53,9 @@ def picofile_dl():
             showurl = f'{i}/{len(urls)}: {url}'
             try:
                 href = getDownloadLink(driver, url)
-                if args.verbose: print(f"    {href}")
+                if not href:
+                    print(f'[blink][red]{url} does not fetch!')
+                    continue
             except exceptions.NoSuchElementException:
                 print(f'{showurl} is expired')
                 continue

@@ -66,7 +66,7 @@ def parse_args(args=None):
         )
         sys.exit(0)
 
-    if (args.url and not args.filename) or (not args.url and args.filename):
+    if not ((args.url and not args.filename) or (not args.url and args.filename)):
         parser.print_usage()
         sys.exit(1)
 
