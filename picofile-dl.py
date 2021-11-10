@@ -18,8 +18,9 @@ from pathlib import  Path
 from parser import *
 
 
-def getDownloadLink(driver, url):
+def getDownloadLink(driver, url, password):
     driver.get(url)
+    if elem:=driver.find_element_by_id('filePassword'): elem.send_keys(password)
     elem = driver.find_element_by_id('getDownloadLink')
     elem.click()
     time.sleep(2)
@@ -52,7 +53,7 @@ def picofile_dl():
         for i, url in enumerate(track(urls, description="[green]Downloading..."), 1):
             showurl = f'{i}/{len(urls)}: {url}'
             try:
-                href = getDownloadLink(driver, url)
+                href = getDownloadLink(driver, url, args.password)
                 if not href:
                     print(f'[blink][red]{url} does not fetch!')
                     continue

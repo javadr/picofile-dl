@@ -28,6 +28,8 @@ python picofile-dl.py [-u URL] [-f FILENAME] [-p PATH] [-h] [-v] [--verbose]
 
 `-f` a file name including bunch of urls each in a line
 
+`--password` password set with the picofile URL
+
 `-h` show help
 
 `-v` output version information and exit
@@ -35,6 +37,6 @@ python picofile-dl.py [-u URL] [-f FILENAME] [-p PATH] [-h] [-v] [--verbose]
 `--verbose` print extra information during the download progress
 
 # Todo
-[ ] Download files protected with password 
+[X] Download files protected with password 
 
 [ ] An option do download the files with the browser (useful for windows user to get rid of installing `Axel4Windows`)
