@@ -20,7 +20,10 @@ from parser import *
 
 def getDownloadLink(driver, url, password):
     driver.get(url)
-    if elem:=driver.find_element_by_id('filePassword'): elem.send_keys(password)
+    try:
+        driver.find_element_by_id('filePassword').send_keys(password)
+    except exceptions.NoSuchElementException:
+        pass
     elem = driver.find_element_by_id('getDownloadLink')
     elem.click()
     time.sleep(2)
