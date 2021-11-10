@@ -22,7 +22,7 @@ Refer to `picofile-dl --help` for a complete, up-to-date reference on the runtim
 Run the script to download a single file or a bunch of files:
 
 ```python
-python picofile-dl.py [-u URL] [-f FILENAME] [-p PATH] [-h] [-v] [--verbose] 
+python picofile-dl.py [-h] [-u URL] [-f FILENAME] [--password PASSWORD] [-p PATH] [-v] [--verbose] 
 ```
 `-u` a url from picofile server to be dowloaded
 
