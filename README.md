@@ -37,6 +37,6 @@ python picofile-dl.py [-h] [-u URL] [-f FILENAME] [--password PASSWORD] [-p PATH
 `--verbose` print extra information during the download progress
 
 # Todo
-[X] Download files protected with password 
+* [X] Download files protected with password 
 
-[ ] An option do download the files with the browser (useful for windows user to get rid of installing `Axel4Windows`)
+* [ ] An option do download the files with the browser (useful for windows user to get rid of installing `Axel4Windows`)
