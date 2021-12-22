@@ -1,5 +1,7 @@
-#!/usr/bin/python3 
+#!/usr/bin/python3
 
+# Wed Dec 22, 2021
+# utf8 file name support
 # Wed Nov 10, 2021
 # Support password set links
 # Mon Nov 8, 2021
@@ -9,5 +11,5 @@
 # Fri Dec 18, 2020
 # Initial release
 
-__version__ = "0.3"
-__date__ = "Nov 10, 2021"
+__version__ = "0.4"
+__date__ = "Dec 22, 2021"
