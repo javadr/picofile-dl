@@ -14,6 +14,7 @@ from rich.progress import track
 from rich import print
 import seedir as sd
 from pathlib import  Path
+import urllib
 
 from parser import *
 
@@ -54,7 +55,7 @@ def picofile_dl():
     os.chdir(downloadPath)
     try:
         for i, url in enumerate(track(urls, description="[green]Downloading..."), 1):
-            showurl = f'{i}/{len(urls)}: {url}'
+            showurl = urllib.parse.unquote(f'{i}/{len(urls)}: {url}')
             try:
                 href = getDownloadLink(driver, url, args.password)
                 if not href:
@@ -67,17 +68,20 @@ def picofile_dl():
                 print(showurl, exp.msg, sep='\n')
                 continue
             
-            filename = href[href.rfind('/')+1:]
+            filename = urllib.parse.unquote(href[href.rfind('/')+1:])
             #if (downloadPath/f"{filename}").is_file():
             # picofile converts `-` to `_` in the download url
             if list(downloadPath.glob(filename.replace('_', '*'))):
                 print(f"{showurl} already exists!")
                 continue
 
-            cmd = ['axel', '-Ncvn4', href]
+            print(showurl)
+            
+            #cmd = ['axel', '-Ncvn4', href]
+            cmd = ['wget', '-qnd', '--no-check-certificate', href]
             proc = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
             o, e = proc.communicate()
-            print(showurl)
+            
             try:
                 print("    Output: " + o.decode('ascii').split('\n')[-2])
             except:
