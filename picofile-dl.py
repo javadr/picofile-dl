@@ -23,7 +23,7 @@ from parser import *
 def getDownloadLink(driver, url, password):
     driver.get(url)
     try:
-        driver.find_element(By.ID, "filePassword") 
+        driver.find_element(By.ID, "filePassword").send_keys(password)
     except exceptions.NoSuchElementException:
         pass
     elem = driver.find_element(By.ID, 'getDownloadLink')
