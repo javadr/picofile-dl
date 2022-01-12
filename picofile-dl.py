@@ -1,9 +1,10 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # getting files from picofile.com
 
 from selenium.webdriver import Firefox
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.by import By
 from selenium.common import exceptions
 import os, time
 import subprocess
@@ -13,7 +14,7 @@ from timebudget import timebudget
 from rich.progress import track
 from rich import print
 import seedir as sd
-from pathlib import  Path
+from pathlib import Path
 import urllib
 
 from parser import *
@@ -22,13 +23,13 @@ from parser import *
 def getDownloadLink(driver, url, password):
     driver.get(url)
     try:
-        driver.find_element_by_id('filePassword').send_keys(password)
+        driver.find_element(By.ID, "filePassword") 
     except exceptions.NoSuchElementException:
         pass
-    elem = driver.find_element_by_id('getDownloadLink')
+    elem = driver.find_element(By.ID, 'getDownloadLink')
     elem.click()
     time.sleep(2)
-    elem = driver.find_element_by_id('downloadLink')
+    elem = driver.find_element(By.ID, 'downloadLink')
     return elem.get_attribute("href")
 
 
@@ -37,7 +38,7 @@ def picofile_dl():
     """
     Main entry point for execution.
     """
-    
+
     args = parse_args()
     driver = Firefox()
 
@@ -54,7 +55,8 @@ def picofile_dl():
     # change directory to download path
     os.chdir(downloadPath)
     try:
-        for i, url in enumerate(track(urls, description="[green]Downloading..."), 1):
+        for i, url in enumerate(
+                track(urls, description="[green]Downloading..."), 1):
             showurl = urllib.parse.unquote(f'{i}/{len(urls)}: {url}')
             try:
                 href = getDownloadLink(driver, url, args.password)
@@ -67,8 +69,8 @@ def picofile_dl():
             except exceptions.WebDriverException as exp:
                 print(showurl, exp.msg, sep='\n')
                 continue
-            
-            filename = urllib.parse.unquote(href[href.rfind('/')+1:])
+
+            filename = urllib.parse.unquote(href[href.rfind('/') + 1:])
             #if (downloadPath/f"{filename}").is_file():
             # picofile converts `-` to `_` in the download url
             if list(downloadPath.glob(filename.replace('_', '*'))):
@@ -76,12 +78,14 @@ def picofile_dl():
                 continue
 
             print(showurl)
-            
+
             #cmd = ['axel', '-Ncvn4', href]
             cmd = ['wget', '-qnd', '--no-check-certificate', href]
-            proc = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            proc = subprocess.Popen(cmd,
+                                    stdout=subprocess.PIPE,
+                                    stderr=subprocess.PIPE)
             o, e = proc.communicate()
-            
+
             try:
                 print("    Output: " + o.decode('ascii').split('\n')[-2])
             except:
@@ -90,9 +94,9 @@ def picofile_dl():
             if proc.returncode: print(f"    code: {str(proc.returncode)}")
 
         print(f" DONE! ({args.path}) ".center(70, '='))
-        sd.seedir(args.path) # print tree directory
+        sd.seedir(args.path)  # print tree directory
         timebudget.report()
-    finally: 
+    finally:
         driver.close()
 
 

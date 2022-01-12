@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 
+# Wed Jan 12, 2022
+# In compliance with the latest version of Selenium since find_element_by_id is deprecated now. 
 # Wed Dec 22, 2021
 # utf8 file name support
 # Wed Nov 10, 2021
@@ -11,5 +13,5 @@
 # Fri Dec 18, 2020
 # Initial release
 
-__version__ = "0.4"
-__date__ = "Dec 22, 2021"
+__version__ = "0.5"
+__date__ = "Jan 12, 2022"
