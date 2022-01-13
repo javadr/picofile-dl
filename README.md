@@ -28,6 +28,8 @@ python picofile-dl.py [-h] [-u URL] [-f FILENAME] [--password PASSWORD] [-p PATH
 
 `-f` a file name including bunch of urls each in a line
 
+`-p` path to save dowloaded files (Default: `/<TEMP>/picofile-dl`)
+
 `--password` password set with the picofile URL
 
 `-h` show help
