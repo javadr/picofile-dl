@@ -44,7 +44,7 @@ def picofile_dl():
 
     if args.filename:
         with open(args.filename) as fu:
-            urls = [item.replace('\n', '') for item in fu.readlines()]
+            urls = [item.replace('\n', '').strip() for item in fu.readlines()]
     elif args.url:
         urls = [args.url]
     downloadPath = Path(args.path)
@@ -56,15 +56,15 @@ def picofile_dl():
     os.chdir(downloadPath)
     try:
         for i, url in enumerate(
-                track(urls, description="[green]Downloading..."), 1):
+                track(urls, description="[green]Downloading...[/green]"), 1):
             showurl = urllib.parse.unquote(f'{i}/{len(urls)}: {url}')
             try:
                 href = getDownloadLink(driver, url, args.password)
                 if not href:
-                    print(f'[blink][red]{url} does not fetch!')
+                    print(f'{url} [blink][red]does not fetch![/red][/blink]')
                     continue
             except exceptions.NoSuchElementException:
-                print(f'{showurl} is expired')
+                print(f'{showurl} [blink][red]is expired![/red][/blink]')
                 continue
             except exceptions.WebDriverException as exp:
                 print(showurl, exp.msg, sep='\n')
