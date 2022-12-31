@@ -29,11 +29,11 @@ def parse_args(args=None):
         help='a specific URL that you want to download from picofile')
 
     group_basic.add_argument('-f',
-                             '--filename',
-                             dest='filename',
-                             action='store',
-                             default=None,
-                             help='a file includes the picofile URLs')
+                            '--filename',
+                            dest='filename',
+                            action='store',
+                            default=None,
+                            help='a file includes the picofile URLs')
 
     group_basic.add_argument(
         '--password',

@@ -17,7 +17,7 @@ import seedir as sd
 from pathlib import Path
 import urllib
 
-from parser import *
+from parsers import parse_args
 
 
 def getDownloadLink(driver, url, password):
@@ -49,7 +49,6 @@ def picofile_dl():
         urls = [args.url]
     downloadPath = Path(args.path)
 
-    #for i, url in enumerate(urls, 1):
     if not downloadPath.exists():
         os.mkdir(downloadPath)
     # change directory to download path
