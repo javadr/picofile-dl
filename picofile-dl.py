@@ -47,10 +47,8 @@ def picofile_dl():
             urls = [item.replace('\n', '').strip() for item in fu.readlines()]
     elif args.url:
         urls = [args.url]
-    downloadPath = Path(args.path)
-
-    if not downloadPath.exists():
-        os.mkdir(downloadPath)
+    downloadPath = Path(args.path).absolute()
+    downloadPath.mkdir(parents=True, exist_ok=True)
     # change directory to download path
     os.chdir(downloadPath)
     try:
@@ -70,7 +68,6 @@ def picofile_dl():
                 continue
 
             filename = urllib.parse.unquote(href[href.rfind('/') + 1:])
-            #if (downloadPath/f"{filename}").is_file():
             # picofile converts `-` to `_` in the download url
             if list(downloadPath.glob(filename.replace('_', '*'))):
                 print(f"{showurl} already exists!")

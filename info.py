@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 
+# Tue Jan 31, 2023
+# Path.mkdir instead of os.mkdir
 # Fri Jan 21, 2022
 # url.strip() to remove surrounding spaces!
 # Wed Jan 12, 2022
@@ -15,5 +17,5 @@
 # Fri Dec 18, 2020
 # Initial release
 
-__version__ = "0.51"
-__date__ = "Jan 21, 2022"
+__version__ = "0.52"
+__date__ = "Jan 31, 2023"
